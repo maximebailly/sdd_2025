@@ -7,6 +7,9 @@ __Organisation de ce repo__
    conda env create -f environment.yml -n sdd2025
    conda activate sdd2025
 ```
+
+(Vous pouvez aussi utiliser `mamba` plutôt que `conda`, `mamba` est plus rapide et s'installe via `conda install mamba`.)
+
 Notez que cet environnement vous fait utiliser JupyterLab et non pas Jupyter Notebook. JupyterLab est plus moderne et plus agréable d'utilisation (voir [la documentation](https://jupyterlab.readthedocs.io/en/stable/)). En particulier, JupyterLab permet de copier des cellules entre notebooks, et l'[extension "Table of contents"](https://github.com/jupyterlab/jupyterlab-toc/blob/master/toc.gif) qui facilite la navigation dans un notebook y est native.
 * `poly/` contient tous les fichiers permettant de compiler le poly. La dernière version compilée à jour s'intitule `sdd_2025_poly.pdf`
 * `pc/` contient un répertoire par PC
