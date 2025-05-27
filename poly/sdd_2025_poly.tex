@@ -1,8 +1,9 @@
+%Compile with lualatex
 %-*- coding: utf-8 -*-
 %\PassOptionsToPackage{dvipsnames}{xcolor} % for compatibility with tikzsymbols
 \documentclass[french,11pt,openany]{book}
 % \overfullrule=2mm %uncomment to visualize overfull boxes
-\usepackage{babel}
+\usepackage[french]{babel}
 \DecimalMathComma
 % Emacs: to save in encoding utf-8:
 % C-x C-m f
@@ -21,7 +22,7 @@
 
 
 % TODO
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames, table]{xcolor} % table option for color in tables
 \newcommand{\todo}[1]{{\color{BrickRed}{TODO~#1}}}
 \newcommand{\rewrite}[1]{{\color{RoyalBlue}{#1}}}
 \newcommand{\erratum}[1]{{\color{Red}{ERRATUM : ~#1}}}
@@ -32,6 +33,26 @@
 \usepackage{graphicx}
 \usepackage{subcaption} % Side-by-side figures
 \usepackage{tikz}
+\usepackage{booktabs, tabularx} % For pretty tables
+% Tabular settings <
+\setlength{\aboverulesep}{0pt} 
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{1pt}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{m}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{d}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{g}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{s}{@{\hspace{3pt}} c @{\hspace{6pt}}} % >
+% To set the style of an entire row in a table <
+\usepackage{array}
+\newcolumntype{+}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+	#1\ignorespaces
+} % >
 
 \usepackage{multirow}
 % Table becomes Tableau
@@ -40,7 +61,9 @@
 \def\frenchtablename{Tableau}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[colorlinks=true,urlcolor=MidnightBlue,linkcolor=black,citecolor=black]{hyperref}
+
+\usepackage[colorlinks=true,urlcolor=MidnightBlue,linkcolor=black,citecolor=black,luatex]{hyperref}
+\usepackage{xurl} % For parsing urls on multiple lines when too long
 
 %%%% GEOMETRY AND SPACING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[tmargin=2cm,bmargin=2cm,lmargin=3cm,footnotesep=1cm]{geometry}
@@ -185,7 +208,7 @@
   ECUE21.2 Science des données (DATA)\\ 
   
   \Large
-  Chloé-Agathe Azencott  et Émilie Chautru \\
+  Chloé-Agathe Azencott  et Emilie Chautru \\
 
   Printemps 2025 -- Mines Paris PSL
 
