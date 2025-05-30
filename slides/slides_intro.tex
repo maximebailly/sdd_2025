@@ -1,0 +1,280 @@
+\documentclass[sans,14pt]{beamer}
+\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+%\setbeameroption{show notes}
+\setbeameroption{hide notes}
+
+\usepackage{etex}
+
+\mode<presentation>
+{
+  \usetheme{Copenhagen}
+  \usecolortheme{beaver}
+  \usefonttheme[onlymath]{serif}
+}
+
+%% Change bullet points style
+\setbeamertemplate{itemize items}{{\textemdash}}
+\setbeamercolor*{item}{fg=MyDarkGrey}
+
+%% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+%% Use only frame number (no total frame count) in footer
+\setbeamertemplate{footline}{%
+  \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{
+        \scriptsize\insertframenumber}}}
+}
+
+% Adjust margin of itemize environment
+\setlength{\leftmargini}{0pt}
+\setlength{\leftmarginii}{10pt}
+\setlength{\leftmarginiii}{17pt}
+
+%% Adjust font sizes
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{normal text}{size=\small}
+\setbeamerfont{itemize/enumerate body}{size=\small}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\footnotesize}
+
+%%% To use the Cabin-Condensed fonts
+%%% More fonts: see http://www.tug.dk/FontCatalogu
+% \usepackage[latin1]{inputenc}
+% \usepackage[T1]{fontenc}
+% \usepackage[sfdefault]{cabin} 
+\usepackage{PTSans} 
+\usepackage{PTSansNarrow} 
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+\newenvironment{ptnormal}{\fontfamily{PTSans-TLF}\selectfont}{\par}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{url}
+%
+
+
+% tikzmark command, for shading over items
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\usetikzlibrary{decorations.pathreplacing} % for curly braces
+\usepackage[framemethod=tikz]{mdframed} % for fancy title page and other boxes
+
+%% Subfigures
+\usepackage[labelformat=simple,caption=false,textfont=scriptsize]{subfig}
+\renewcommand{\thesubfigure}{\relax} % do not number captions of
+                                     % subfloats
+
+
+
+%%% Colors
+%\usepackage{color}
+\definecolor{MyBlue}{rgb}{0.27,0.62,0.73}%{0.,0.2,0.4} 
+\definecolor{Aubergine}{rgb}{0.47,0.13,0.44} % 119 33 111
+\definecolor{MyTurq}{rgb}{0.,0.8,0.8} 
+\definecolor{MyDarkGrey}{rgb}{0.3,0.3,0.3} 
+\definecolor{MyMedGrey}{rgb}{0.6,0.6,0.6} 
+\definecolor{MyLightGrey}{rgb}{0.95,0.95,0.95} 
+\definecolor{MyDarkRed}{rgb}{0.8,0.,0.} 
+\definecolor{MyOrange}{rgb}{0.93,0.56,0.25}
+\definecolor{MyPink}{rgb}{0.73,0.27,0.39}
+\definecolor{MyLightYellow}{HTML}{FFFFCC}
+%\usepackage[colorlinks=true,citecolor=MyTurq]{hyperref}
+% \AtEveryCite{\color{MyMedGrey}}
+
+\newcommand{\blue}[1]{{\color{MyBlue}{\textbf{#1}}}}
+\newcommand{\red}[1]{{\color{MyOrange}{\textbf{#1}}}}
+\newcommand{\black}[1]{{\color{MyDarkGrey}{\textbf{#1}}}}
+\newcommand{\yellow}[1]{{\color{MyLightYellow}{\textbf{#1}}}}
+
+\newcommand{\TODO}{{\color{MyDarkRed}{TODO~}}}
+
+\setbeamercolor{normal text}{fg=MyDarkGrey}
+\setbeamercolor{frametitle}{fg=Aubergine}
+
+%%% ---- Titre des slides  (underline) ----------------
+\setbeamertemplate{frametitle}{%
+    \usebeamerfont{frametitle}\insertframetitle\strut%
+    \vskip-.05\baselineskip%
+    \leaders\vrule width \paperwidth\vskip1.pt%
+    \vskip0pt%
+    \nointerlineskip
+}
+%%% ---------------------------------------------------
+
+
+% --- Math symbols -------------------------------------------------------------
+\newcommand{\EE}{{\mathbb E}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+
+\newcommand{\avec}{\vec{a}}
+\newcommand{\alphavec}{\vec{\alpha}}
+\newcommand{\betavec}{\vec{\beta}}
+\newcommand{\cvec}{\vec{c}}
+\newcommand{\fvec}{\vec{f}}
+\newcommand{\muvec}{\vec{\mu}}
+\newcommand{\rvec}{\vec{r}}
+\newcommand{\thetavec}{\vec{\theta}}
+\newcommand{\xvec}{\vec{x}}
+\newcommand{\yvec}{\vec{y}}
+\newcommand{\wvec}{\vec{w}}
+\newcommand{\zvec}{\vec{z}}
+
+% \newcommand{\amat}{{\mathbf A}}}
+% \newcommand{\dmat}{{\mathbf D}}
+% \newcommand{\gmat}{{\mathbf G}}
+% \newcommand{\kmat}{{\mathbf K}}
+% \newcommand{\lmat}{{\mathbf L}}
+% \newcommand{\mmat}{{\mathbf M}}
+% \newcommand{\wmat}{{\mathbf W}}
+% \newcommand{\xmat}{{\mathbf X}}
+
+\newcommand{\dset}{\mathcal{D}}
+\newcommand{\fcal}{\mathcal{F}}
+\newcommand{\ncal}{\mathcal{N}}
+\newcommand{\rcal}{\mathcal{R}}
+\newcommand{\sset}{\mathcal{S}}
+\newcommand{\vset}{\mathcal{V}}
+\newcommand{\tset}{\mathcal{T}}
+\newcommand{\xcal}{\mathcal{X}}
+\newcommand{\ycal}{\mathcal{Y}}
+
+\newcommand{\lzeronorm}[1]{\left|\left|#1\right|\right|_0}
+\newcommand{\lonenorm}[1]{\left|\left|#1\right|\right|_1}
+\newcommand{\ltwonorm}[1]{\left|\left|#1\right|\right|_2}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+% ------------------------------------------------------------------------------
+
+
+
+
+
+
+
+\newcommand{\mytitle}{ECUE21.2 Science des données (DATA)}
+\author{Chlo\'e-Agathe~Azencott et \'Emilie Chautru}
+\date{\small Juin 2024}
+
+\begin{document}
+{
+  \begin{frame}[plain]
+    \fontfamily{PTSansNarrow-TLF}\selectfont
+    % \begin{center}
+    %   {\ptnormal{\textit{ECUE21.2 Science des données}}}
+    % \end{center}
+
+    %\vspace{100pt}
+
+      {\Large \bf \mytitle}
+
+      \insertauthor
+
+      % {\footnotesize
+      %   \centerline{Center for Computational Biology (CBIO)}
+      
+      %   \centerline{Mines Paris PSL -- Institut Curie -- INSERM U900}
+
+      %   \centerline{PSL Research University \& PR[AI]RIE, Paris, France}
+      % }
+
+      % \centerline {\insertdate}
+
+
+      % \vspace{-15pt}
+
+      % \begin{center}
+      %   \begin{tabular}[b]{ccc}
+      %     {\scriptsize \href{http://cazencott.info}{http://cazencott.info}} &
+      %     {\scriptsize \href{chloe-agathe.azencott@minesparis.psl.eu}
+      %       {chloe-agathe.azencott@minesparis.psl.eu}} & 
+      %     {\scriptsize \href{https://lipn.info/@cazencott}{@cazencott@lipn.info}} \\
+      %   \end{tabular}
+      % \end{center}
+\end{frame}
+
+% Do not count title slide when numbering frames
+\addtocounter{framenumber}{-1}
+
+\begin{frame}
+  \frametitle{Objectifs}
+  \begin{itemize}
+  \item \blue{Démystifier} science des données, big data, intelligence artificielle
+  \item Poser les bases \blue{mathématiques} et \blue{algorithmiques} de la \red{statistique inférentielle} et de l'\red{apprentissage automatique}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Moyens}
+  \begin{itemize}
+  \item \black{Modalités}
+    \begin{itemize}
+    \item 8 \blue{amphis}
+    \item 6 \blue{petites classes} \red{à préparer}
+    \item 2 \blue{séances de projet numérique}
+    \end{itemize}
+  \pause
+  \item \black{Ressources}
+    \begin{itemize}
+    \item \blue{Github:} \href{https://github.com/chagaz/sdd\_2025}{https://github.com/chagaz/sdd\_2025}
+    \item[] Poly, sujets de petites classes et de projet et leurs sources
+    \end{itemize}
+  \begin{itemize}
+    \item \blue{Moodle:} \href{https://moodle.psl.eu/course/view.php?id=30665}{https://moodle.psl.eu/course/view.php?id=30665}
+    \item[] Ressources complémentaires, dépôt de projet
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Évaluation}
+  \begin{itemize}
+  \item \blue{Examen sur table} 10 juillet (70\%)
+    \begin{itemize}
+    \item Tous documents papier autorisés
+    \end{itemize}
+  \pause
+  \item \blue{Projet numérique} 10 juillet (30\%)
+    \begin{itemize}
+    \item En binôme
+    \item Deux séances dédiées (20 juin, 7 juillet) \red{présence notée}
+    \item Utilisation d'agents conversationnels/assistants de code \red{prohibée} et \red{sanctionnée}
+      \begin{itemize}
+      \item Entrave à l'apprentissage 
+      \item Possibles effets négatifs sur les capacités cognitives
+       et la qualité du code
+      \item Enjeux éthiques, écologiques, géopolitiques (voir Chap. 6)
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  \vskip 0pt plus 1filll \scriptsize
+  Bastani et al. (2024), Generative AI Can Harm Learning. The Wharton School Research Paper\\
+  Zhai et al. (2024), The effects of over-reliance on AI dialogue systems on students' cognitive abilities. SLE\\
+Perry et al. (2023), Do Users Write More Insecure Code with AI Assistants? CCS'23
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
