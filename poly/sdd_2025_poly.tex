@@ -33,13 +33,13 @@
 \usepackage{graphicx}
 \usepackage{subcaption} % Side-by-side figures
 \usepackage{tikz}
-\usepackage{booktabs, tabularx} % For pretty tables
+\usepackage{booktabs, tabularx, float, rotating} % For pretty tables
 % Tabular settings <
 \setlength{\aboverulesep}{0pt} 
 \setlength{\belowrulesep}{0pt}
 \setlength{\extrarowheight}{1pt}
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
-\newcolumntype{m}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{b}[1]{>{\PreserveBackslash\centering}p{#1}}
 \newcolumntype{d}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
 \newcolumntype{g}[1]{>{\PreserveBackslash\raggedright}p{#1}}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
