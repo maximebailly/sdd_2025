@@ -350,14 +350,19 @@ classification binaire peuvent être résumées dans une
 \textbf{matrice de confusion} : une matrice $M$ de deux lignes et deux
 colonnes, et dont l'entrée $M_{ck}$ est le nombre d'exemples de la classe $c$
 pour laquelle l'étiquette $k$ a été prédite.
-\begin{center}
-  \begin{tabular}[h]{|c|c|c|c|} \hline \multicolumn{2}{|c}{} &
-      \multicolumn{2}{|c|}{Classe réelle} \\ \hline \multicolumn{2}{|c|}{} & 0 & 1 \\ \hline 
-    Classe & 0 & vrais négatifs (TN) & faux négatifs (FN)
-    \\ \cline{2-4} prédite & 1 & faux positifs (FP) & vrais positifs (TP)
-    \\ \hline
-  \end{tabular}
-\end{center}
+\begin{table}[h]
+	\centering
+	\arrayrulecolor{black!70}
+	\begin{tabular}[h]{cccc}
+		\cmidrule[1.5pt]{3-4}
+		& & \multicolumn{2}{c}{\textbf{Classe réelle}} \\ \cmidrule{3-4}
+		& & 0 & 1 \\ \midrule[1pt]
+		\textbf{Classe}& \multicolumn{1}{|c!{\color{black!70}\vrule width 1pt}}{0} & \cellcolor{gray!20} vrais négatifs (TN) & faux négatifs (FN) \\ 
+		\textbf{prédite}& \multicolumn{1}{|c!{\color{black!70}\vrule width 1pt}}{1} & faux positifs (FP) & \cellcolor{gray!20} vrais positifs (TP) \\ 
+		\bottomrule[1.5pt]
+	\end{tabular}
+\end{table}
+%\vspace*{-1em}
 
 % On retrouve ici les erreurs de première et de deuxième espèce de la
 % section~\ref{sec:test_errors}, qu'on appellera plutôt respectivement faux
