@@ -27,7 +27,9 @@
 \newcommand{\rewrite}[1]{{\color{RoyalBlue}{#1}}}
 \newcommand{\erratum}[1]{{\color{Red}{ERRATUM : ~#1}}}
 
-
+\definecolor{MPred}{RGB}{192,80,77} 
+\definecolor{MPblue}{RGB}{0,94,158}
+\definecolor{halfgray}{gray}{0.55}
 
 %%%% TABLES & FIGURES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
@@ -61,6 +63,7 @@
 \def\frenchtablename{Tableau}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%% HYPERREFS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[colorlinks=true,urlcolor=MidnightBlue,linkcolor=black,citecolor=black,luatex]{hyperref}
 \usepackage{xurl} % For parsing urls on multiple lines when too long
@@ -77,31 +80,63 @@
 \setitemize{itemsep=1pt} % space between items
 
 \usepackage{titlesec}
+\newcommand{\trule}{\titlerule[2pt]}
+	
 \titlespacing{\paragraph}{%
   0pt}{%              left margin
   0.5\baselineskip}{% space before (vertical)
   1em}%               space after (horizontal)
 
-\titlespacing*{\section}{0pt}{10pt}{0pt}
+%\titlespacing*{\section}{0pt}{10pt}{0pt}
 
 \titleclass{\part}{top}
+%\titleformat{\part}[display]
+%  {\normalfont\huge\bfseries}{\centering\partname\ \thepart}{5pt}{\Huge\centering}
+%\titlespacing*{\part}{0pt}{50pt}{40pt}
+
 \titleformat{\part}[display]
-  {\normalfont\huge\bfseries}{\centering\partname\ \thepart}{5pt}{\Huge\centering}
-\titlespacing*{\part}{0pt}{50pt}{40pt}
+{\centering}%
+{\color{halfgray}\fontsize{35pt}{0pt}\selectfont\sffamily{\partname~\protect\thepart}}{1em}%
+{{\color{MPblue}\trule}\vspace{1em} \fontsize{45pt}{0pt}\selectfont}[\clearpage]
+
 
 \titleclass{\chapter}{straight}
-\titlespacing*{\chapter}{0pt}{50pt}{30pt}
-\titleformat{\chapter}%[display]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{15pt}{\huge}
+%\titlespacing*{\chapter}{0pt}{50pt}{30pt}
+%\titleformat{\chapter}%[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{15pt}{\huge}
+\titleformat{\chapter}[display]%
+{\relax}{\raggedleft\color{halfgray}\Large\MakeUppercase{\sffamily\chaptername}\raisebox{-0.6\height}{\fontsize{80pt}{0pt}\selectfont\bfseries\thechapter}\vspace*{-\baselineskip}}{0pt}%
+{\huge\bfseries\raggedright}[\normalsize\vspace*{.5\baselineskip}\color{MPblue}\trule]
+\titlespacing*{\chapter}{0pt}{\baselineskip}{1.5\baselineskip}
+
+\titleformat{\section}
+{\relax}{\LARGE\color{MPblue}\textbf{\thesection}}{1em}{\LARGE\bfseries}
+% subsections
+\titleformat{\subsection}
+{\relax}{\Large\color{MPblue}\bfseries{\thesubsection}}{1em}{\Large\bfseries}
+% subsubsections
+\titleformat{\subsubsection}
+{\relax}{\large\color{MPblue}\bfseries{{\thesubsubsection}}}{1em}{\large\bfseries}      
+\titlespacing*{\section}{0pt}{1.2\baselineskip}{1\baselineskip} 
+\titlespacing*{\subsection}{0pt}{1.2\baselineskip}{1\baselineskip}
+% paragraphs
 
 \usepackage[all]{nowidow}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  
+\usepackage[headings]{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{\color{halfgray}\sffamily\rightmark}
+\fancyhead[LE,RO]{\color{halfgray}\sffamily\bfseries\thepage}
+\let\oldheadrule\headrule% Copy \headrule into \oldheadrule
+\renewcommand{\headrule}{\color{halfgray}\oldheadrule}% Add colour to \headrule
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot{}
+\usepackage{emptypage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
 
 % Mathematical symbols
 \input{contents/notations}
-
 
 
 %%% CODE LISTINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,8 +156,6 @@
   %procnamekeys={def,class}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 %%% ENVIRONNEMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
@@ -189,7 +222,7 @@
 
 
 \begin{document}
-
+\pagestyle{empty}
 % Vertical spacing above/before equations
 \setlength{\abovedisplayskip}{5pt}
 \setlength{\belowdisplayskip}{3pt}
@@ -197,47 +230,53 @@
 
 \renewcommand{\bibname}{}
 
-
 \begin{center}
   
   \hfill
 
   \vfill
   
-  \LARGE 
-  ECUE21.2 Science des données (DATA)\\ 
+  {\huge \bfseries
+  ECUE21.2 Science des données (DATA)}\\[1em]
   
   \Large
-  Chloé-Agathe Azencott  et Emilie Chautru \\
+  Chloé-Agathe Azencott  et Emilie Chautru \\[1em]
 
   Printemps 2025 -- Mines Paris PSL
 
   \vfill
 
-  \large
+  
   \textbf{Compétences} 
 
-
-  \begin{tabular}[h]{|p{0.025\textwidth}|p{0.975\textwidth}|}
-    \hline
-    C1 & Maîtriser des méthodes statistiques usuelles permettant de traiter convenablement des cas simples d'analyse de données \\ \hline
-    C2 & Maîtriser des méthodes usuelles d'exploration des données \\ \hline
-    C3 &  Connaître les limites d'applications des méthodes vues en cours \\ \hline
-    C4 & Pouvoir se référer à un cas d'application avec des données réelles en lien avec une discipline autre que celle de l'analyse des données \\ \hline
-    C5 & Savoir évaluer la complexité numérique de quelques algorithmes \\ \hline
-    C6 & Connaître des méthodes d'apprentissage statistique (machine learning) supervisé et des méthodes d'apprentissage statistique non supervisé \\ \hline
-    C7 & Savoir valider et sélectionner un modèle statistique \\ \hline
-  \end{tabular}
+\large
+\begin{table}[H]\captionsetup{labelformat=empty} 
+	\centering
+	\arrayrulecolor{black!70}
+	\rowcolors{2}{white}{gray!20}
+	\begin{tabular}{p{0.025\textwidth}p{0.975\textwidth}} \toprule[1.5pt] 
+    C1 & Maîtriser des méthodes statistiques usuelles permettant de traiter convenablement des cas simples d'analyse de données \\ 
+C2 & Maîtriser des méthodes usuelles d'exploration des données \\ 
+C3 &  Connaître les limites d'applications des méthodes vues en cours \\ 
+C4 & Pouvoir se référer à un cas d'application avec des données réelles en lien avec une discipline autre que celle de l'analyse des données \\ 
+C5 & Savoir évaluer la complexité numérique de quelques algorithmes \\ 
+C6 & Connaître des méthodes d'apprentissage statistique (machine learning) supervisé et des méthodes d'apprentissage statistique non supervisé \\ 
+C7 & Savoir valider et sélectionner un modèle statistique \\ 
+\bottomrule[1.5pt]
+	\end{tabular}
+\end{table}
 
   \vfill
 
 \end{center}
-\clearpage
 
+\cleardoublepage
+\pagestyle{fancy}
+\pagenumbering{roman}
 \tableofcontents
-\clearpage
+\cleardoublepage
 
-
+\pagenumbering{arabic}
 \chapter{Introduction}
 \input{contents/intro}
 

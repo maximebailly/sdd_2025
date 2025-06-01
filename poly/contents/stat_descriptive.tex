@@ -1,5 +1,6 @@
 %-*- coding: utf-8 -*-
 \label{chap:stat_descr}
+\,
 \paragraph{Notions :} individu, population, fréquences, indicateurs de tendance
 centrale, indicateurs de liaison, table de contingence.
 
@@ -45,6 +46,7 @@ L'étude d'une série statistique passe par la construction d'une \textbf{table
 qualitative ou discrète, soit d'intervalles de ces valeurs. La construction de
 ces intervalles permet de transformer la série statistique en \textbf{série
 	classée.}
+\pagebreak
 
 \begin{exemple}
 	Prenons l'exemple des données dans
@@ -246,7 +248,7 @@ l'étalement de ces valeurs.
 	10\si{\celsius} n'est pas « deux fois plus chaud » que 5\si{\celsius}). De
 	plus, il est numériquement instable quand $\bar x$ est proche de 0.
 \end{itemize}
-%\pagebreak
+\pagebreak
 
 \begin{exemple}
 	La variance de notre série de températures minimales vaut $10,02 \si{\celsius^2}$,
@@ -493,8 +495,6 @@ d_{\chi^2} = \sum_{k=1}^K \sum_{\ell=1}^L  \dfrac{\left( n_{k\ell} -
 	tableau~\ref{tab:remboursement_age_region}. La distance du chi2 pour cette
 	table de contingence est de 11,21, ce qui suggère une dépendance entre les
 	variables « âge » et « région » dans les données.
-\end{exemple}
-
 
 \begin{table}[h]
 	\centering
@@ -542,6 +542,7 @@ la proportion relative des modalités de $x$. Ces deux choix sont illustrés sur
 figures~\ref{fig:remboursement_age_region_lines}
 et~\ref{fig:remboursement_age_region_cols} respectivement.
 
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{figures/stats/remboursement_age_region_lines}
@@ -551,6 +552,7 @@ et~\ref{fig:remboursement_age_region_cols} respectivement.
 	\label{fig:remboursement_age_region_lines}
 \end{figure}
 
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{figures/stats/remboursement_age_region_cols}
@@ -559,6 +561,7 @@ et~\ref{fig:remboursement_age_region_cols} respectivement.
 		tableau~\ref{tab:remboursement_age_region}.}
 	\label{fig:remboursement_age_region_cols}
 \end{figure}
+\end{exemple}
 
 %\clearpage
 \input{contents/qcm/qcm1}

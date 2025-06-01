@@ -15,12 +15,12 @@
 
 \section{Des séries statistiques aux jeux de données}
 Nous avons jusqu'à présent travaillé sur des séries statistiques contenant une
-seule variable. Cependant, dans la majorité des problèmes de sciences des
+seule variable. Cependant, dans la majorité des problèmes de science des
 données, nous disposons de plusieurs variables pour décrire chaque individu.
 
 L'objet de nos études, à savoir le jeu de données, n'est donc plus un
-échantillon $(x_1, x_2, \dots, x_n)$ d'une variable aléatoire rélle $X$, mais
-un échantillon d'un vecteur aléatoire à valeurs dans un espace $\XX$. Nous
+échantillon $(x_1, x_2, \dots, x_n)$ d'une variable aléatoire réelle $X$, mais
+d'un \textit{vecteur} aléatoire à valeurs dans un espace $\XX$. Nous
 considèrerons en général que $\XX = \RR^p$ et que notre jeu de données peut
 être décrit par une matrice $X \in \RRnp$.  C'est par exemple la
 matrice de taille $31 \times 8$ des entrées du tableau~\ref{tab:meteo_data}.
@@ -119,7 +119,7 @@ Deux possibilités s'offrent à nous pour réduire la dimension de nos données 
 
 La sélection de variables consiste à éliminer des variables peu informatives.
 
-Dans le cas non-supervisé, il s'agit par exemple d'éliminer des variables
+Dans le cas non-supervisé, il s'agit par exemple d'éliminer des variables:
 \begin{itemize}
 \item dont la variance est très faible : leur valeur étant à peu près la même
   pour chaque individu, elles n'apportent aucune information permettant de
@@ -129,7 +129,7 @@ Dans le cas non-supervisé, il s'agit par exemple d'éliminer des variables
 \end{itemize}
 
 Dans le cas supervisé, il s'agit aussi d'éliminer des variables qui ne sont pas
-pertinentes par rapport à la tâche de prédiction. On peut par exemple
+pertinentes par rapport à la tâche de prédiction. On peut par exemple:
 \begin{itemize}
 \item éliminer, par exemple à l'aide d'un test statistique ou une mesure de corrélation,
   les variables indépendantes de l'étiquette à prédire. Remarquez néanmoins que
@@ -204,8 +204,7 @@ l'application de l'ACP.  Cette standardisation s'effectue par :
       \sum_{l=1}^n (x^l_j - \overline{x_j})^2}},
 \end{equation}
 où $\overline{x_j} = \frac1n \sum_{l=1}^n x^l_j.$ On dira alors que $X$ est
-\textbf{centrée} : chacune de ses colonnes a pour moyenne 0 et \textbf{réduite} :
-chacune de ses colonnes a pour variance 1.
+\textbf{centrée}, i.e. chacune de ses colonnes a pour moyenne 0, et \textbf{réduite}, i.e. chacune de ses colonnes a pour variance 1.
 
 \begin{exemple}
   Considérons la matrice de données 
@@ -262,7 +261,7 @@ La variance de $X \ww$ vaut donc
   \text{var}(X \ww) = \frac1n \sum_{i=1}^n \left( \sum_{j=1}^p x_j^i w_j \right)^2 = \ww^\top \Sigma \ww.
 \end{equation*}    
 \item Appelons maintenant $\ww_1 \in \RR^p$ la première composante principale de $X$.
-$\ww_1$ est de norme $1$ et telle que la variance de $X \ww_1$ est maximale :
+Le vecteur $\ww_1$ est de norme $1$ et tel que la variance de $X \ww_1$ est maximale :
 \begin{equation}
   \label{eq:pc1}
   \ww_1 \in \argmax_{\ww \in \RR^p} \left( \ww^\top \Sigma \ww \right)  \text{\qquad avec } \ltwonorm{\ww_1}^2=1.
@@ -336,7 +335,7 @@ de la deuxième valeur propre de $\Sigma$.
 en observant que $\Sigma$, étant définie positive, est
 diagonalisable par un changement de base orthonormée :
 $\Sigma = Q^\top \Lambda Q$, où $\Lambda \in \RRpp$ est une
-matrice diagonale dont les valeurs diagonales sont les valeurs propres de
+matrice diagonale dont les valeurs diagonales $\lambda_1,\dots,\lambda_p$ sont les valeurs propres de
 $\Sigma$.  Ainsi,
 \begin{equation*}
   \ww_1^\top \Sigma \ww_1 = \ww_1^\top Q^\top \Lambda Q \ww_1 = 
