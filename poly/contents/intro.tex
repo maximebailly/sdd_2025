@@ -6,10 +6,10 @@ apprentissage statistique, population
 
 \paragraph{Objectifs pédagogiques :}
 \begin{itemize}
-\item Donner une définition de la science des données
-\item Donner une définition de la statistique 
-\item Donner une définition de l'apprentissage statistique, ou apprentissage
-  automatique, ou encore \textit{machine learning}
+	\item Donner une définition de la science des données
+	\item Donner une définition de la statistique 
+	\item Donner une définition de l'apprentissage statistique, ou apprentissage
+	automatique, ou encore \textit{machine learning}
 \end{itemize}
 
 
@@ -64,20 +64,20 @@ années.
 À l'issue de ce cours, vous devriez avoir acquis
 \textit{a minima} les compétences suivantes :
 \begin{enumerate}
-\item Interpréter une p-valeur ;
-\item Éviter les principaux écueils de visualisation de données ;
-\item Expliciter le principe de la minimisation du risque empirique, et
-  l'illustrer sur un ou deux ex\-emples d'algorithmes d'apprentissage automatique ;
-\item Expliquer comment un algorithme d'apprentissage automatique peut
-  reproduire un biais  ;
-\item Reconnaître une situation pouvant prêter au surapprentissage ;
-\item Sélectionner et valider un modèle d'apprentissage automatique ;
-\item Décrire un réseau de neurones artificiels comme un modèle paramétrique ;
-\item Lister quelques succès et limites de l'apprentissage profond ;
-\item Donner des exemples d'algorithmes d'apprentissage automatique permettant
-  d'apprendre des modèles non linéaires ;
-\item Discuter de quelques uns des enjeux éthiques liés à l'intelligence
-  artificielle.
+	\item Interpréter une p-valeur ;
+	\item Éviter les principaux écueils de visualisation de données ;
+	\item Expliciter le principe de la minimisation du risque empirique, et
+	l'illustrer sur un ou deux ex\-emples d'algorithmes d'apprentissage automatique ;
+	\item Expliquer comment un algorithme d'apprentissage automatique peut
+	reproduire un biais  ;
+	\item Reconnaître une situation pouvant prêter au surapprentissage ;
+	\item Sélectionner et valider un modèle d'apprentissage automatique ;
+	\item Décrire un réseau de neurones artificiels comme un modèle paramétrique ;
+	\item Lister quelques succès et limites de l'apprentissage profond ;
+	\item Donner des exemples d'algorithmes d'apprentissage automatique permettant
+	d'apprendre des modèles non linéaires ;
+	\item Discuter de quelques uns des enjeux éthiques liés à l'intelligence
+	artificielle.
 \end{enumerate}
 
 Les sections marquées d'un $\bullet$ dans le poly sont celles qui ne font pas
@@ -125,7 +125,7 @@ mesure d'une ou plusieurs caractéristiques d'un ensemble de personnes ou objets
 \subsection{Vocabulaire}
 
 L'ensemble de personnes ou d'objets équivalents étudiés est appelé \textbf{la
-  population.} Il peut s'agir d'une population au sens « courant » du terme
+	population.} Il peut s'agir d'une population au sens « courant » du terme
 (par exemple, l'ensemble de la population française, ou l'ensemble des
 individus d'une espèce animale sur un territoire) mais aussi plus largement
 d'un ensemble plus générique d'objets que l'on cherche à étudier (par exemple,
@@ -137,7 +137,7 @@ Chacun des éléments de la population est appelé \textbf{individu.}
 Les caractéristiques que l'on mesure pour chacun de ces individus sont appelées
 les \textbf{variables} ; les mesures effectives de ces caractéristiques sur chacun des individus sont appelées des \textbf{observations}. Un ensemble de $n$
 observations $(x_1, x_2, \dots, x_n)$ d'une variable est appelée \textbf{série
-  statistique.}
+	statistique.}
 
 Par exemple, si j'étudie les données climatiques pour la station météo de
 Paris-Montsouris en 2019 (cf. tableau~\ref{tab:meteo_data}), il s'agit d'une
@@ -161,19 +161,19 @@ sur un échantillon de 20 observations.
 
 On distinguera plusieurs types de variables :
 \begin{itemize}
-\item les \textbf{variables quantitatives} : des caractéristiques numériques
-  qui s'expriment naturellement à l'aide de nombres réels. Ces variables
-  peuvent être \textbf{discrètes} si le nombre de valeurs qu'elles peuvent
-  prendre est fini ou dénombrable (ex : âge, nombre de frères et s\oe{}urs) ou
-  \textbf{continues} (ex : températures, taille, pression atmosphérique)
-\item les \textbf{variables qualitatives} : des caractéristiques qui, bien
-  qu'elles puissent être encodées numériquement (ex : département de
-  naissance), relèvent plutôt de catégories et sur lesquelles les opérations
-  arithmétiques de base (somme, moyenne) n'ont aucun sens. On parle de
-  variables \textbf{nominales} s'il n'y a pas d'ordre total sur l'ensemble de
-  ces catégories (ex : département de naissance) ou \textbf{ordinales} s'il y
-  en a (ex : entièrement d'accord, assez d'accord, pas vraiment d'accord, pas
-  du tout d'accord).
+	\item les \textbf{variables quantitatives} : des caractéristiques numériques
+	qui s'expriment naturellement à l'aide de nombres réels. Ces variables
+	peuvent être \textbf{discrètes} si le nombre de valeurs qu'elles peuvent
+	prendre est fini ou dénombrable (ex : âge, nombre de frères et s\oe{}urs) ou
+	\textbf{continues} (ex : températures, taille, pression atmosphérique)
+	\item les \textbf{variables qualitatives} : des caractéristiques qui, bien
+	qu'elles puissent être encodées numériquement (ex : département de
+	naissance), relèvent plutôt de catégories, dites \textbf{modalités}, et sur lesquelles les opérations
+	arithmétiques de base (somme, moyenne) n'ont aucun sens. On parle de
+	variables \textbf{nominales} s'il n'y a pas d'ordre total sur l'ensemble de
+	ces catégories (ex : département de naissance) ou \textbf{ordinales} s'il y
+	en a (ex : entièrement d'accord, assez d'accord, pas vraiment d'accord, pas
+	du tout d'accord).
 \end{itemize}
 
 Remarque : seuiller des variables quantitatives permet de les transformer en
@@ -199,7 +199,7 @@ remboursements comme une variable discrète ou continue.
 
 \subsection{Statistique descriptive} 
 La \textbf{statistique descriptive,} aussi appelée \textbf{statistique
-  exploratoire,} consiste à caractériser une population par la détermination
+	exploratoire,} consiste à caractériser une population par la détermination
 d'un certain nombre de grandeurs qui la décrivent. Son objectif est de
 synthétiser l'information contenue dans un ensemble d'observations et de mettre
 en évidence des propriétés de cet ensemble. Elle permet aussi de suggérer des
@@ -213,7 +213,7 @@ est traitée au chapitre~\ref{chap:stat_descr}.
 
 \subsection{Statistique inférentielle} 
 Aussi appelée \textbf{statistique décisionnaire,} ou encore \textbf{inférence
-  statistique,} la \textbf{statistique inférentielle} consiste à tirer des
+	statistique,} la \textbf{statistique inférentielle} consiste à tirer des
 conclusions sur une population à partir de l'étude d'un échantillon de
 celle-ci. Les données observées sont considérées comme un échantillon d'une
 population. Il s'agit alors d'étendre des propriétés constatées sur
@@ -231,13 +231,13 @@ l'informatique et des mathématiques tout autant que neurologues, pédagogues,
 philosophes ou artistes.
 
 Dans le cas d'un programme informatique, on parle d'\textbf{apprentissage
-  statistique,} ou \textbf{apprentissage automatique}, ou encore {\it machine
-  learning}, quand ce programme a la capacité de se modifier lui-même sans que cette
+	statistique,} ou \textbf{apprentissage automatique}, ou encore {\it machine
+	learning}, quand ce programme a la capacité de se modifier lui-même sans que cette
 modification ne soit explicitement programmée. Cette définition est celle
 donnée par Arthur Samuel en 1959. On peut ainsi opposer un programme {\it
-  classique}, qui utilise une procédure et les données qu'il reçoit en entrée
+	classique}, qui utilise une procédure et les données qu'il reçoit en entrée
 pour produire en sortie des réponses, à un programme {\it d'apprentissage
-  automatique}, qui utilise les données et les réponses afin de produire la
+	automatique}, qui utilise les données et les réponses afin de produire la
 procédure qui permet d'obtenir les secondes à partir des premières.
 
 Supposons par exemple qu'une entreprise veuille connaître le montant total
@@ -261,10 +261,10 @@ fondamentalement, de \textbf{modéliser} un phénomène à partir de données
 considérées comme autant d'observations de celui-ci. %\pagebreak
 
 \begin{attention}
-  Bien que l'usage soit souvent d'appeler les deux du même nom, il faut
-  distinguer l'\textbf{algorithme d'apprentissage} automatique du
-  \textbf{modèle appris} : le premier utilise les données pour produire le
-  second, qui peut ensuite être appliqué comme un programme classique.
+	Bien que l'usage soit souvent d'appeler les deux du même nom, il faut
+	distinguer l'\textbf{algorithme d'apprentissage} automatique du
+	\textbf{modèle appris} : le premier utilise les données pour produire le
+	second, qui peut ensuite être appliqué comme un programme classique.
 \end{attention}
 
 On distingue plusieurs types de problèmes en apprentissage automatique. Nous nous intéresserons dans ce cours à l'apprentissage supervisé et à l'apprentissage non-supervisé, en ignorant entre autres l'apprentissage par renforcement principalement utilisé en robotique.
@@ -295,19 +295,19 @@ statistique exploratoire.
 
 Parmi les exemples d'apprentissage non supervisé, on compte notamment 
 \begin{itemize}
-\item la \textbf{réduction de dimension}, que nous aborderons au
-  chapitre~\ref{chap:dimred}, qui permet de créer un petit nombre de variables
-  qui « résument » les mesures prises sur les observations. Il s'agit en fait de trouver
-  une représentation des données dans un espace de dimension plus faible que
-  celle de l'espace dans lequel elles sont représentées initialement. Cela
-  permet de réduire les temps de calcul et l'espace mémoire nécessaire au
-  stockage les données, mais aussi souvent d'améliorer les performances d'un
-  algorithme d'apprentissage supervisé entraîné par la suite sur ces données.
-\item le \textbf{partitionnement}, ou \textbf{clustering}, qui permet de
-  réduire la taille d'un échantillon en regroupant les individus présentant des
-  caractéristiques homogènes. Nous ne traiterons pas de ce sujet dans ce
-  cours. Il sera notamment abordé dans le cours optionnel d'apprentissage
-  automatique proposé en semaine bloquée à l'automne (S1333-5).
+	\item la \textbf{réduction de dimension}, que nous aborderons au
+	chapitre~\ref{chap:dimred}, qui permet de créer un petit nombre de variables
+	qui « résument » les mesures prises sur les observations. Il s'agit en fait de trouver
+	une représentation des données dans un espace de dimension plus faible que
+	celle de l'espace dans lequel elles sont représentées initialement. Cela
+	permet de réduire les temps de calcul et l'espace mémoire nécessaire au
+	stockage les données, mais aussi souvent d'améliorer les performances d'un
+	algorithme d'apprentissage supervisé entraîné par la suite sur ces données.
+	\item le \textbf{partitionnement}, ou \textbf{clustering}, qui permet de
+	réduire la taille d'un échantillon en regroupant les individus présentant des
+	caractéristiques homogènes. Nous ne traiterons pas de ce sujet dans ce
+	cours. Il sera notamment abordé dans le cours optionnel d'apprentissage
+	automatique proposé en semaine bloquée à l'automne (S1333-5).
 \end{itemize}
 
 
@@ -341,107 +341,107 @@ détacher les mathématiques et l'informatique du contexte de leur utilisation.
 Le contenu de ce poly s'appuie en partie sur des documents mis à disposition en
 ligne par Stéphane Canu, Laure Reboul, et Joseph Salmon, que je remercie
 vivement, ainsi que les ouvrages \textit{Probabilités, analyse des données et
-  Statistique} (Technip) de Gilbert Saporta et mon \textit{Introduction au
-  Machine Learning} (Dunod InfoSup). Vous trouverez une version PDF (sans les
+	Statistique} (Technip) de Gilbert Saporta et mon \textit{Introduction au
+	Machine Learning} (Dunod InfoSup). Vous trouverez une version PDF (sans les
 exercices) de ce dernier sur ma page web \href{http://cazencott.info}{http://cazencott.info}.
 
 
 \begin{plusloin}
-  \item L'article \href{https://www.tandfonline.com/doi/full/10.1080/10618600.2017.1384734}{\textit{50 Years of Data Science} de David Donaho}
-aborde les différences entre statistique, science des données, et apprentissage
-automatique et donne une vision d'ensemble de ces domaines.
+	\item L'article \href{https://www.tandfonline.com/doi/full/10.1080/10618600.2017.1384734}{\textit{50 Years of Data Science} de David Donaho}
+	aborde les différences entre statistique, science des données, et apprentissage
+	automatique et donne une vision d'ensemble de ces domaines.
 \end{plusloin}
 
 %\section{Tableaux de données}
 \begin{table}
-  \centering
-  \arrayrulecolor{black!70}
-  \rowcolors{2}{gray!20}{white}
-  \begin{tabular}[h]{+c^c^c^c^c^c^c^c} \toprule[1.5pt]
-    \rowstyle{\bfseries} T min & T max & T moy & Vent & Ensoleillement & Précipitations & P min & P max \\
-    \textdegree C & \textdegree C & \textdegree C & km/h & min & mm & hPa & hPa \\
-    \midrule[1pt]
-    7.6 & 9.6 & 8.4 & 22.2 & 0 & 0 & 1034 & 1036.6 \\
-    5.6 & 7.2 & 6.3 & 24.1 & 0 & 0 & 1037.3 & 1041.3 \\
-    4.1 & 6.6 & 5.4 & 16.7 & 0 & 0 & 1040.2 & 1041.8 \\
-    3.1 & 6 & 4.7 & 20.4 & 0 & 0 & 1039.5 & 1041.7 \\
-    4.2 & 5.9 & 5 & 20.4 & 0 & 0 & 1037.5 & 1039.6 \\
-    4.3 & 6.8 & 5.6 & 16.7 & 0 & 0 & 1036.5 & 1038 \\
-    6.8 & 8.6 & 7.4 & 20.4 & 0 & 0.6 & 1030.5 & 1037.2\\
-    7.4 & 9.7 & 8.5 & 24.1 & 120 & 0 & 1025.9 & 1029.7 \\
-    4 & 7.7 & 5.2 & 29.6 & 42 & 0.8 & 1024.1 & 1026.4 \\ 
-    2.1 & 5.5 & 4 & 18.5 & 30 & 0 & 1026.6 & 1029.5 \\
-    4.2 & 8.3 & 6.2 & 14.8 & 0 & 1.2 & 1028.1 & 1030.5 \\
-    6.7 & 9.1 & 8 & 22.2 & 0 & 0.8 & 1021.7 & 1030.6 \\
-    8.8 & 11.9 & 10.5 & 31.5 & 30 & 0.8 & 1014 & 1021.1 \\
-    8.5 & 10.9 & 8.8 & 29.6 & 0 & 0 & 1014 & 1024.8 \\
-    6.9 & 8.6 & 7.6 & 16.7 & 0 & 0 & 1020.3 & 1025.3 \\
-    1.9 & 7.8 & 5.2 & 27.8 & 276 & 3 & 1007.9 & 1019.6 \\
-    4 & 8.5 & 5.4 & 27.8 & 0 & 0 & 1007.5 & 1019.7 \\
-    0.9 & 6.1 & 2.4 & 18.5 & 342 & 0 & 1017.2 & 1021 \\
-    -1.7 & 2.8 & 0.3 & 14.8 & 78 & 4 & 1009.7 & 1016.8 \\
-    1.9 & 3 & 2.5 & 20.4 & 0 & 0.8 & 1010.1 & 1021.8 \\
-    -2.2 & 3.6 & 0.1 & 13 & 480 & 0 & 1019.2 & 1024.9 \\
-    -2.4 & 1.7 & -0.1 & 20.4 & 0 & 7.4 & 998.4 & 1018.3 \\
-    0.6 & 2.1 & 1.3 & 24.1 & 6 & 1 & 995.6 & 1007.4 \\
-    -0.4 & 2.5 & 1.2 & 20.4 & 0 & 1 & 1008.4 & 1015.5 \\
-    1.7 & 5.5 & 3.9 & 13 & 0 & 1.2 & 1015.2 & 1018.4 \\
-    5.5 & 9.6 & 8.4 & 29.6 & 24 & 1.6 & 998.1 & 1016.9 \\
-    4.4 & 8.2 & 6.4 & 37 & 6 & 4.4 & 989.8 & 1001.4 \\
-    2.7 & 6.9 & 4.4 & 25.9 & 216 & 0 & 1001.7 & 1011.7 \\
-    -0.8 & 5.2 & 1.7 & 24.1 & 18 & 19.6 & 989.5 & 1011.7 \\
-    0.5 & 5.2 & 2.3 & 33.3 & 252 & 0.4 & 990 & 998.9 \\ 
-    -1 & 2.5 & 1.3 & 25.9 & 24 & 1.2 & 983.5 & 998 \\
-    \bottomrule[1.5pt]
-  \end{tabular}
-  \caption{Exemple de 8 variables pour 31 observations (celles du mois de janvier 2019) 
-    de la population des données climatiques pour la station météo de Paris-Montsouris. Ces données sont disponibles dans le fichier \texttt{data/meteo\_data.csv}.}
-  \label{tab:meteo_data}
+	\centering
+	\arrayrulecolor{black!70}
+	\rowcolors{2}{gray!20}{white}
+	\begin{tabular}[h]{+c^c^c^c^c^c^c^c} \toprule[1.5pt]
+		\rowstyle{\bfseries} T min & T max & T moy & Vent & Ensoleillement & Précipitations & P min & P max \\
+		\textdegree C & \textdegree C & \textdegree C & km/h & min & mm & hPa & hPa \\
+		\midrule[1pt]
+		7.6 & 9.6 & 8.4 & 22.2 & 0 & 0 & 1034 & 1036.6 \\
+		5.6 & 7.2 & 6.3 & 24.1 & 0 & 0 & 1037.3 & 1041.3 \\
+		4.1 & 6.6 & 5.4 & 16.7 & 0 & 0 & 1040.2 & 1041.8 \\
+		3.1 & 6 & 4.7 & 20.4 & 0 & 0 & 1039.5 & 1041.7 \\
+		4.2 & 5.9 & 5 & 20.4 & 0 & 0 & 1037.5 & 1039.6 \\
+		4.3 & 6.8 & 5.6 & 16.7 & 0 & 0 & 1036.5 & 1038 \\
+		6.8 & 8.6 & 7.4 & 20.4 & 0 & 0.6 & 1030.5 & 1037.2\\
+		7.4 & 9.7 & 8.5 & 24.1 & 120 & 0 & 1025.9 & 1029.7 \\
+		4 & 7.7 & 5.2 & 29.6 & 42 & 0.8 & 1024.1 & 1026.4 \\ 
+		2.1 & 5.5 & 4 & 18.5 & 30 & 0 & 1026.6 & 1029.5 \\
+		4.2 & 8.3 & 6.2 & 14.8 & 0 & 1.2 & 1028.1 & 1030.5 \\
+		6.7 & 9.1 & 8 & 22.2 & 0 & 0.8 & 1021.7 & 1030.6 \\
+		8.8 & 11.9 & 10.5 & 31.5 & 30 & 0.8 & 1014 & 1021.1 \\
+		8.5 & 10.9 & 8.8 & 29.6 & 0 & 0 & 1014 & 1024.8 \\
+		6.9 & 8.6 & 7.6 & 16.7 & 0 & 0 & 1020.3 & 1025.3 \\
+		1.9 & 7.8 & 5.2 & 27.8 & 276 & 3 & 1007.9 & 1019.6 \\
+		4 & 8.5 & 5.4 & 27.8 & 0 & 0 & 1007.5 & 1019.7 \\
+		0.9 & 6.1 & 2.4 & 18.5 & 342 & 0 & 1017.2 & 1021 \\
+		-1.7 & 2.8 & 0.3 & 14.8 & 78 & 4 & 1009.7 & 1016.8 \\
+		1.9 & 3 & 2.5 & 20.4 & 0 & 0.8 & 1010.1 & 1021.8 \\
+		-2.2 & 3.6 & 0.1 & 13 & 480 & 0 & 1019.2 & 1024.9 \\
+		-2.4 & 1.7 & -0.1 & 20.4 & 0 & 7.4 & 998.4 & 1018.3 \\
+		0.6 & 2.1 & 1.3 & 24.1 & 6 & 1 & 995.6 & 1007.4 \\
+		-0.4 & 2.5 & 1.2 & 20.4 & 0 & 1 & 1008.4 & 1015.5 \\
+		1.7 & 5.5 & 3.9 & 13 & 0 & 1.2 & 1015.2 & 1018.4 \\
+		5.5 & 9.6 & 8.4 & 29.6 & 24 & 1.6 & 998.1 & 1016.9 \\
+		4.4 & 8.2 & 6.4 & 37 & 6 & 4.4 & 989.8 & 1001.4 \\
+		2.7 & 6.9 & 4.4 & 25.9 & 216 & 0 & 1001.7 & 1011.7 \\
+		-0.8 & 5.2 & 1.7 & 24.1 & 18 & 19.6 & 989.5 & 1011.7 \\
+		0.5 & 5.2 & 2.3 & 33.3 & 252 & 0.4 & 990 & 998.9 \\ 
+		-1 & 2.5 & 1.3 & 25.9 & 24 & 1.2 & 983.5 & 998 \\
+		\bottomrule[1.5pt]
+	\end{tabular}
+	\caption{Exemple de 8 variables pour 31 observations (celles du mois de janvier 2019) 
+		de la population des données climatiques pour la station météo de Paris-Montsouris. Ces données sont disponibles dans le fichier \texttt{data/meteo\_data.csv}.}
+	\label{tab:meteo_data}
 \end{table}
 
 \begin{table}
-  \centering
-  \arrayrulecolor{black!70}
-  \rowcolors{2}{gray!20}{white}
-  \begin{tabular}{+d{1.5cm}^d{1.5cm}^d{1.5cm}^d{3cm}^d{3cm}}  \toprule[1.5pt]
-    \rowstyle{\bfseries} Âge & Région & Nombre d'actes & Montants remboursés & Montants remboursables \\ 
-    ans & & & \texteuro & \texteuro \\ 
-     \midrule[1pt]
-    $>$ 60 & 76 & 26 & 377,96 & 402,80\\  
-    $>$ 60 & 75 & 1\,401 & 14\,054,37 & 21\,332,15\\  
-    $>$ 60 & 44 & 5\,299 & 65\,928,93 & 80\,447,00\\  
-    $>$ 60 & 32 & 1\,706 & 25\,137,65 & 26\,032,65\\  
-    $>$ 60 & 32 & 2\,596 & 37\,877,02 & 39\,336,15\\  
-    $>$ 60 & 27 & 14 & 159,85 & 211,35\\  
-    $>$ 60 & 24 & 3\,565 & 50\,770,46 & 54\,076,15\\  
-    $>$ 60 & 11 & 396 & 5\,226,55 & 6\,060,05\\  
-    $>$ 60 & 5 & 260 & 4\,496,91 & 4\,676,40\\  
-    $>$ 60 & 93 & 162 & 2\,303,56 & 2\,466,10\\  
-    $>$ 60 & 76 & 578 & 8\,499,53 & 8\,793,10\\  
-    40--59 & 76 & 13 & 172,26 & 199,80\\  
-    40--59 & 44 & 102 & 1\,204,93 & 1\,557,20\\  
-    40--59 & 11 & 48 & 555,39 & 733,05\\  
-    40--59 & 84 & 14 & 190,21 & 217,85\\  
-    40--59 & 32 & 126 & 1\,350,06 & 1\,912,15\\  
-    20--39 & 32 & 749 & 7\,941,69 & 11\,362,40\\  
-    20--39 & 32 & 24 & 289,35 & 365,25\\  
-    20--39 & 5 & 918 & 9\,704,10 & 16\,550,40\\  
-    20--39 & 11 & 106 & 1\,073,32 & 1\,618,35\\  
-     \bottomrule[1.5pt]
-  \end{tabular}
-  \caption{Population de remboursements du dosage de l'antigène 125 dans le sang en 2018, 
-    composée de 20 individus décrits par 5 variables et extraite du fichier \texttt{data/OPEN\_BIO\_2018\_7325.csv}. \\
-    Région : 5 = Régions et Départements d'outre-mer. 
-    11 = Ile-de-France. 
-    24 = Centre-Val de Loire.
-    27 = Bourgogne-Franche-Comté.
-    32 = Hauts-de-France.
-    44 = Grand-Est.
-    75 = Nouvelle-Aquitaine.
-    76 = Occitanie.
-    84 = Auvergne-Rhône-Alpes.
-    93 = Provence-Alpes-Côte d'Azur et Corse.}
-  \label{tab:remboursement_data}
+	\centering
+	\arrayrulecolor{black!70}
+	\rowcolors{2}{gray!20}{white}
+	\begin{tabular}{+d{1.5cm}^d{1.5cm}^d{1.5cm}^d{3cm}^d{3cm}}  \toprule[1.5pt]
+		\rowstyle{\bfseries} Âge & Région & Nombre d'actes & Montants remboursés & Montants remboursables \\ 
+		ans & & & \texteuro & \texteuro \\ 
+		\midrule[1pt]
+		$>$ 60 & 76 & 26 & 377,96 & 402,80\\  
+		$>$ 60 & 75 & 1\,401 & 14\,054,37 & 21\,332,15\\  
+		$>$ 60 & 44 & 5\,299 & 65\,928,93 & 80\,447,00\\  
+		$>$ 60 & 32 & 1\,706 & 25\,137,65 & 26\,032,65\\  
+		$>$ 60 & 32 & 2\,596 & 37\,877,02 & 39\,336,15\\  
+		$>$ 60 & 27 & 14 & 159,85 & 211,35\\  
+		$>$ 60 & 24 & 3\,565 & 50\,770,46 & 54\,076,15\\  
+		$>$ 60 & 11 & 396 & 5\,226,55 & 6\,060,05\\  
+		$>$ 60 & 5 & 260 & 4\,496,91 & 4\,676,40\\  
+		$>$ 60 & 93 & 162 & 2\,303,56 & 2\,466,10\\  
+		$>$ 60 & 76 & 578 & 8\,499,53 & 8\,793,10\\  
+		40--59 & 76 & 13 & 172,26 & 199,80\\  
+		40--59 & 44 & 102 & 1\,204,93 & 1\,557,20\\  
+		40--59 & 11 & 48 & 555,39 & 733,05\\  
+		40--59 & 84 & 14 & 190,21 & 217,85\\  
+		40--59 & 32 & 126 & 1\,350,06 & 1\,912,15\\  
+		20--39 & 32 & 749 & 7\,941,69 & 11\,362,40\\  
+		20--39 & 32 & 24 & 289,35 & 365,25\\  
+		20--39 & 5 & 918 & 9\,704,10 & 16\,550,40\\  
+		20--39 & 11 & 106 & 1\,073,32 & 1\,618,35\\  
+		\bottomrule[1.5pt]
+	\end{tabular}
+	\caption{Population de remboursements du dosage de l'antigène 125 dans le sang en 2018, 
+		composée de 20 individus décrits par 5 variables et extraite du fichier \texttt{data/OPEN\_BIO\_2018\_7325.csv}. \\
+		Région : 5 = Régions et Départements d'outre-mer. 
+		11 = Ile-de-France. 
+		24 = Centre-Val de Loire.
+		27 = Bourgogne-Franche-Comté.
+		32 = Hauts-de-France.
+		44 = Grand-Est.
+		75 = Nouvelle-Aquitaine.
+		76 = Occitanie.
+		84 = Auvergne-Rhône-Alpes.
+		93 = Provence-Alpes-Côte d'Azur et Corse.}
+	\label{tab:remboursement_data}
 \end{table}
 
 
