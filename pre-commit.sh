@@ -27,6 +27,6 @@ rm -f pc/*/*~
 rm -f slides/*~
 rm -f *~
 
-for fname in poly/notebooks/*.ipynb ; do nbstripout $fname ; done
-for fname in pc/pc*/*.ipynb ; do nbstripout $fname ; done
-for fname in slides/*.ipynb ; do nbstripout $fname ; done
+#for fname in poly/notebooks/*.ipynb ; do nbstripout $fname ; done
+#for fname in pc/pc*/*.ipynb ; do nbstripout $fname ; done
+#for fname in slides/*.ipynb ; do nbstripout $fname ; done
