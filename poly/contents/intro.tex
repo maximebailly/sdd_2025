@@ -63,19 +63,19 @@ années.
 À l'issue de ce cours, vous devriez avoir acquis
 \textit{a minima} les compétences suivantes :
 \begin{enumerate}
-	\item Interpréter une p-valeur ;
-	\item Éviter les principaux écueils de visualisation de données ;
-	\item Expliciter le principe de la minimisation du risque empirique, et
+	\item interpréter une p-valeur ;
+	\item éviter les principaux écueils de visualisation de données ;
+	\item expliciter le principe de la minimisation du risque empirique, et
 	l'illustrer sur un ou deux ex\-emples d'algorithmes d'apprentissage automatique ;
-	\item Expliquer comment un algorithme d'apprentissage automatique peut
+	\item expliquer comment un algorithme d'apprentissage automatique peut
 	reproduire un biais  ;
-	\item Reconnaître une situation pouvant prêter au surapprentissage ;
-	\item Sélectionner et valider un modèle d'apprentissage automatique ;
-	\item Décrire un réseau de neurones artificiels comme un modèle paramétrique ;
-	\item Lister quelques succès et limites de l'apprentissage profond ;
-	\item Donner des exemples d'algorithmes d'apprentissage automatique permettant
+	\item reconnaître une situation pouvant prêter au surapprentissage ;
+	\item sélectionner et valider un modèle d'apprentissage automatique ;
+	\item décrire un réseau de neurones artificiels comme un modèle paramétrique ;
+	\item lister quelques succès et limites de l'apprentissage profond ;
+	\item donner des exemples d'algorithmes d'apprentissage automatique permettant
 	d'apprendre des modèles non linéaires ;
-	\item Discuter de quelques uns des enjeux éthiques liés à l'intelligence
+	\item discuter de quelques uns des enjeux éthiques liés à l'intelligence
 	artificielle.
 \end{enumerate}
 
@@ -160,12 +160,12 @@ sur un échantillon de 20 observations.
 
 On distinguera plusieurs types de variables :
 \begin{itemize}
-	\item les \textbf{variables quantitatives} : des caractéristiques numériques
+	\item Les \textbf{variables quantitatives} : des caractéristiques numériques
 	qui s'expriment naturellement à l'aide de nombres réels. Ces variables
 	peuvent être \textbf{discrètes} si le nombre de valeurs qu'elles peuvent
 	prendre est fini ou dénombrable (ex : âge, nombre de frères et s\oe{}urs) ou
-	\textbf{continues} (ex : températures, taille, pression atmosphérique)
-	\item les \textbf{variables qualitatives} : des caractéristiques qui, bien
+	\textbf{continues} (ex : températures, taille, pression atmosphérique).
+	\item Les \textbf{variables qualitatives} : des caractéristiques qui, bien
 	qu'elles puissent être encodées numériquement (ex : département de
 	naissance), relèvent plutôt de catégories, dites \textbf{modalités}, et sur lesquelles les opérations
 	arithmétiques de base (somme, moyenne) n'ont aucun sens. On parle de
@@ -258,6 +258,7 @@ statistique. Cependant, nous aurons l'occasion de voir que la frontière entre
 inférence statistique et apprentissage est souvent mince.  Il s'agit ici,
 fondamentalement, de \textbf{modéliser} un phénomène à partir de données
 considérées comme autant d'observations de celui-ci. %\pagebreak
+\medskip
 
 \begin{attention}
 	Bien que l'usage soit souvent d'appeler les deux du même nom, il faut
@@ -265,6 +266,7 @@ considérées comme autant d'observations de celui-ci. %\pagebreak
 	\textbf{modèle appris} : le premier utilise les données pour produire le
 	second, qui peut ensuite être appliqué comme un programme classique.
 \end{attention}
+\medskip
 
 On distingue plusieurs types de problèmes en apprentissage automatique. Nous nous intéresserons dans ce cours à l'apprentissage supervisé et à l'apprentissage non-supervisé, en ignorant entre autres l'apprentissage par renforcement principalement utilisé en robotique.
 \subsection{Apprentissage supervisé}
@@ -292,9 +294,9 @@ pas étiquetées. Il s'agit alors de modéliser les observations pour mieux les
 comprendre. Ces techniques sont ainsi complémentaires de celles de la
 statistique exploratoire.
 
-Parmi les exemples d'apprentissage non supervisé, on compte notamment 
+Parmi les exemples d'apprentissage non supervisé, on compte notamment :
 \begin{itemize}
-	\item la \textbf{réduction de dimension}, que nous aborderons au
+	\item La \textbf{réduction de dimension}, que nous aborderons au
 	chapitre~\ref{chap:dimred}, qui permet de créer un petit nombre de variables
 	qui « résument » les mesures prises sur les observations. Il s'agit en fait de trouver
 	une représentation des données dans un espace de dimension plus faible que
@@ -302,7 +304,7 @@ Parmi les exemples d'apprentissage non supervisé, on compte notamment
 	permet de réduire les temps de calcul et l'espace mémoire nécessaire au
 	stockage les données, mais aussi souvent d'améliorer les performances d'un
 	algorithme d'apprentissage supervisé entraîné par la suite sur ces données.
-	\item le \textbf{partitionnement}, ou \textbf{clustering}, qui permet de
+	\item Le \textbf{partitionnement}, ou \textbf{clustering}, qui permet de
 	réduire la taille d'un échantillon en regroupant les individus présentant des
 	caractéristiques homogènes. Nous ne traiterons pas de ce sujet dans ce
 	cours. Il sera notamment abordé dans le cours optionnel d'apprentissage

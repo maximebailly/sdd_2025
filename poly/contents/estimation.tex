@@ -18,98 +18,81 @@ vraisemblance, estimation de Bayes.
 Alors que la statistique descriptive se contente de \textit{décrire} une
 population ou un échantillon de celle-ci, l'inférence statistique cherche à
 tirer des conclusions sur une population à partir de l'étude d'un échantillon
-de celle-ci. 
+de celle-ci, tout en évaluant le niveau de confiance qui peut leur être accordé.
 
-\section{Échantillonnage}
+\subsection{Échantillonnage en population finie}
 \label{ref:echantilonnage}
 
-Lorsque la population à étudier est trop grande pour qu'il soit possible
-d'observer chacun de ses individus, on étudie alors une partie seulement de la
-population. Cette partie est appelée \textbf{échantillon}. On parle alors de
+Lorsque la population à étudier possède un nombre fini $N$ d'individus trop élevé pour qu'il soit possible
+de tous les observer, on en étudie alors un sous-ensemble de taille $n < N$, appelé \textbf{échantillon}. On parle alors de
 \textbf{sondage}, par opposition à un \textbf{recensement}, qui consiste à
 étudier tous les individus d'une population.
 
-\paragraph{Hypothèses de l'échantillonnage} Pour tirer parti d'un échantillon,
-nous allons avoir besoin des hypothèses suivantes :
-\begin{itemize}
-\item La taille de la population est infinie ;
-\item Les variables mesurées sur la population peuvent être considérées comme
-  des variables aléatoires, dont les mesures sont des réalisations. Les lois de
-  probabilité suivies par ces variables peuvent appartenir à une famille connue
-  (e.g. loi gaussienne, loi de Poisson, etc.) ou être totalement
-  inconnues. Dans le premier cas, on parlera de \textbf{statistique
-    inférentielle paramétrique} ; dans le deuxième, de \textbf{statistique
-    inférentielle non-paramétrique}.
-\end{itemize}
-
-\paragraph{Objectifs de la statistique inférentielle} La statistique
-inférentielle a alors pour but d'\textbf{identifier les lois de probabilité de ces
-  variables aléatoires.} Cela peut prendre les
-formes suivantes :
-\begin{itemize}
-\item L'\textbf{estimation}, qui permet de déterminer les paramètres des lois (paramètre
-  $p$ d'une loi de Bernoulli, indice et paramètre d'échelle d'une loi Gamma) ou
-  certaines de leurs caractéristiques (espérance, variance, moments d'ordre
-  supérieur, quartiles, etc.). C'est le sujet de ce chapitre.
-\item Les \textbf{tests d'hypothèse}, qui permettent d'infirmer ou de confirmer des
-  hypothèses faites sur ces lois, leurs paramètres ou leurs
-  caractéristiques. Il s'agit par exemple de décider s'il est plausible que
-  l'espérance d'une variable soit supérieure à une certaine valeur ; ou qu'une
-  variable suive une loi normale. C'est le sujet du chapitre~\ref{chap:tests}. %Ce sujet dépasse le cadre de ce cours.
-  
-\end{itemize}
-
 \paragraph{Échantillonnage aléatoire}
-Dans la suite de ce chapitre, nous allons considérer que l'échantillon obtenu
-par sondage est obtenu par \textbf{échantillonnage aléatoire simple} : on
-prélève des individus dans la population au hasard, sans remise. Chaque
-individu de la population a la même probabilité $1/N$ d'être prélevé, où $N$
-est la taille de la population (on rappelle que $N \rightarrow \infty$) et les 
-individus sont prélevés indépendamment les uns des autres.
+Notons $U$ la population d'intérêt et $\mathcal{P}(U)$ l'ensemble de ses parties. Afin d'induire les caractéristiques de $U$ à partir d'un unique échantillon $s \subset U$ tout en étant capable de contrôler le niveau de précision des résultats fournis (qui serait parfait en cas de recensement), la théorie des sondages s'appuie sur la sélection aléatoire de ce sous-ensemble d'individus. Pour cela, une loi de probabilité discrète $\PP_S$ est choisie sur l'ensemble $\mathcal{P}(U)$ de tous les échantillons possibles. On définit ensuite un \textit{échantillon aléatoire} $S \sim \PP_S$, dont est tirée une réalisation $s$, qui forme l'échantillon observé.  
 
-\paragraph{Autres techniques d'échantillonnage} D'autres techniques
-d'échantillonnage sont possibles, comme l'échantillonnage aléatoire
-\textit{stratifié}, dans lequel la population est partitionnée en strates selon
-une caractéristique (par exemple, par tranche d'âge), et l'échantillon est
-obtenu en procédant à un échantillonnage aléatoire simple dans chacune des
-strates. On obtient ainsi pour chaque strate un échantillon de taille
-proportionnelle à la taille de la strate dans la population. En d'autres
-termes, les individus n'ont pas tous la même probabilité d'être tirés :
-celle-ci dépend de la taille de la strate à laquelle ils appartiennent.
+\paragraph{Plans de sondage} La loi de probabilité $\PP_S$ définit un plan de sondage aléatoire sans remise. Il est dit \textbf{simple} lorsque $n$ est fixé à l'avance et que tous les échantillons de taille $n$ ont la même probabilité d'être sélectionnés : $$\forall\,s\subset U\qquad \PP_S(s) = \PP(S=s) = \begin{cases} \binom{N}{n}^{-1} & \text{si } \text{Card}(s) = n,\\ 0 & \text{sinon.} \end{cases}$$ Chaque individu a alors une chance $\frac{n}{N}$ d'être tiré.
+
+D'autres techniques d'échantillonnage sont évidemment possibles. Le plan de sondage \textbf{stratifié}, par exemple, repose sur le partitionnement de la population en strates selon
+une caractéristique connue (e.g. par tranche d'âge). L'échantillon est
+ensuite obtenu en procédant à un échantillonnage aléatoire simple dans chacune des strates. Les individus n'ont alors pas tous la même probabilité d'être tirés : elle dépend de la taille de la strate à laquelle ils appartiennent.
+
+\paragraph{Inférence en population finie}
+Dans ce contexte, la statistique inférentielle a pour but d'identifier un ensemble de caractéristiques observables sur la population. Par exemple, si l'on s'intéresse à une variable $x$ prenant les valeurs $(x_i)_{i\in U}$ dans la population, on peut souhaiter évaluer le total $x^* = \sum_{i\in U} x_i$ alors que l'on ne dispose que de la série statistique $(x_i)_{i\in s}$. Si cette dernière est obtenue via un plan aléatoire simple, on peut par exemple utiliser la somme pondérée $\sum_{i \in s} \frac{N}{n} x_i$. Cette quantité est une \textbf{estimation} du total $x^*$. De manière à déterminer avec quelle précision elle s'approche de $x^*$ quel que soit l'échantillon $s$ dont on dispose, on étudie plutôt les propriétés probabilistes de la somme pondérée aléatoire $\sum_{i \in S} \frac{N}{n} x_i$, dite \textbf{estimateur} du total $x^*$.
 
 \paragraph{Représentativité} Avant de tirer des conclusions d'un échantillon
-aléatoire, il est important de s'assurer que celui-ci est représentatif de la
-population étudiée. Par exemple, les premières études cliniques démontrant
+aléatoire, il est important de comprendre s'il est représentatif de la
+population étudiée, et d'adapter en conséquence les outils mathématiques d'évaluation des caractéristiques de la population complète. Par exemple, les premières études cliniques démontrant
 l'efficacité de l'aspirine pour réduire le risque d'infarctus du myocarde chez
 les patients à risque portaient sur des échantillons composés principalement
 d'hommes ; ce n'est que bien plus tard que la communauté médicale a réalisé que
-l'efficacité est bien moindre chez les femmes.
+l'efficacité est bien moindre chez les femmes. 
+En théorie des sondages, on cherche généralement à éviter la représentativité, pour se concentrer sur la collecte des données qui donneront les évaluations les plus précises possibles des caractéristiques de la population. C'est au moment des calculs que le déséquilibre introduit est pris en compte et compensé, par la pondération des observations.
 
-\paragraph{Échantillon aléatoire et échantillon} Deux échantillons $(x_1, x_2, \dots, x_n)$ et
-$(x^\prime_1, x^\prime_2, \dots, x^\prime_n)$ de tailles identiques $n$ de la
-même population seront donc différents. On modélise cette variabilité en
-considérant que les individus $x_i$ et $x^\prime_i$ sont la réalisation
-d'une même variable aléatoire $X_i.$ $(X_1, X_2, \dots, X_n)$ est un vecteur
-aléatoire dont les composantes sont indépendantes et identiquement
-distribuées (iid).
+\subsection{Modèle statistique}
+
+{\'E}tant donné le cadre précédemment posé, comment appréhender une population qui n'est pas réellement fixée, mais en perpétuelle évolution ? Plus encore, comment étudier une collection de mesures théoriquement réalisables une infinité de fois, comme lors d'expériences physiques en laboratoire ? 
+La modélisation statistique permet d'apporter une réponse à ces questions. Elle s'intéresse aux expériences dites aléatoires qui, menées de manière répétée dans les mêmes conditions contrôlables, ne donnent pas systématiquement le même résultat.
+
+\paragraph{Échantillon aléatoire et échantillon} Deux séries de résultats d'une telle expérience de même taille $n$ constituent deux échantillons $(x_1, x_2, \dots, x_n)$ et $(x^\prime_1, x^\prime_2, \dots, x^\prime_n)$ différents l'un de l'autre. On modélise cette variabilité en
+considérant que les observations $x_i$ et $x^\prime_i$ sont la réalisation
+d'une même variable aléatoire $X_i$. Le vecteur aléatoire $(X_1, X_2, \dots, X_n)$ représente alors un échantillon-type de taille $n$. Il est appelé \textbf{échantillon aléatoire}, par contraste avec les échantillons $(x_1, x_2, \dots, x_n)$ et $(x^\prime_1, x^\prime_2, \dots, x^\prime_n)$ qui en sont des \textit{réalisations}.
+
+Un \textbf{indicateur statistique} de l'échantillon est alors la réalisation d'une variable aléatoire fonction de l'échantillon aléatoire.
+
+\begin{exemple} La moyenne d'un échantillon
+	$\bar{x} = \frac1n \sum_{i=1}^n x_i$ est une réalisation de la variable
+	aléatoire
+	\[
+	M_n = \frac1n \sum_{i=1}^n X_i,
+	\]
+	qui est une fonction de l'échantillon aléatoire $(X_1, X_2, \dots, X_n)$.
+\end{exemple}
+
+
+\paragraph{Modèle statistique} Un modèle statistique est défini comme un triplet caractérisant notre croyance sur l'aléa observé :
 \begin{itemize}
-\item $(X_1, X_2, \dots, X_n)$ est appelé \textbf{échantillon aléatoire} ;
-\item $(x_1, x_2, \dots, x_n)$ et $(x^\prime_1, x^\prime_2, \dots, x^\prime_n)$
-  sont deux échantillons, c'est-à-dire deux \textit{réalisations} de cet
-  échantillon aléatoire.
+	\item l'ensemble $\XX$ dans lequel le vecteur aléatoire $(X_1, X_2, \dots, X_n)$ prend ses valeurs,
+	\item la tribu associée $\Bcal$,
+	\item une famille de lois de probabilités sur $(\XX,\Bcal)$ dans laquelle il est supposé que se trouve celle de $(X_1, X_2, \dots, X_n)$.
+\end{itemize}
+Lorsque la famille de lois est connue et caractérisée par un petit nombre de paramètres (e.g. loi gaussienne, loi de Poisson, etc.), on parle de \textbf{statistique inférentielle paramétrique}. Lorsqu'elle est totalement
+inconnue, on parle de \textbf{statistique inférentielle non-paramétrique}.
+
+\paragraph{$n$-échantillon aléatoire}	Dans toute la suite du chapitre, nous supposerons que $X_1,\dots,X_n$ sont des variables aléatoires indépendantes et identiquement distribuées (iid), de même loi qu'une variable aléatoire générique $X$. Le vecteur $(X_1,\dots,X_n)$ est alors appelé $n$-échantillon aléatoire. 
+
+
+\paragraph{Objectifs de la statistique inférentielle} Dans ce cadre, la statistique inférentielle a pour but d'\textbf{iden\-tifier les lois de probabilité de ces variables aléatoires.} Cela peut prendre les
+formes suivantes :
+\begin{itemize}
+\item L'\textbf{estimation}, qui permet de déterminer les paramètres des lois (paramètre $p$ d'une loi de Bernoulli, indice et paramètre d'échelle d'une loi Gamma) ou certaines de leurs caractéristiques (espérance, variance, moments d'ordre supérieur, quartiles, etc.). C'est le sujet de ce chapitre.
+\item Les \textbf{tests d'hypothèse}, qui permettent d'infirmer ou de confirmer des hypothèses faites sur ces lois, leurs paramètres ou leurs
+  caractéristiques. Il s'agit par exemple de décider s'il est plausible que
+  l'espérance d'une variable soit supérieure à une certaine valeur ; ou qu'une
+  variable suive une loi normale. C'est le sujet du chapitre~\ref{chap:tests}. %Ce sujet dépasse le cadre de ce cours. 
 \end{itemize}
 
-Un indicateur statistique de l'échantillon est alors la réalisation d'une
-variable aléatoire fonction de l'échantillon aléatoire.
 
-\begin{exemple} La moyenne d'un échantillon,
-$\bar{x} = \frac1n \sum_{i=1}^n x_i,$ est la réalisation d'une variable
-aléatoire $M_n$ définie par
-\[
-  M_n = \frac1n \sum_{i=1}^n X_i,
-\]
-qui est une fonction de l'échantillon aléatoire $(X_1, X_2, \dots, X_n)$.
-\end{exemple}
 
 \section{Estimation ponctuelle}
 Soit $(\Omega, \Acal, \PP)$ un espace probabilisé, $E$ un espace mesurable, et
@@ -165,7 +148,7 @@ $X,$
 
 \subsection{Exemple : estimation de la moyenne par la moyenne empirique}
 Considérons maintenant que $X$ est de carré intégrable ($X \in \Lcal^2$),
-d'espérance $m$ et de variance $\sigma^2$.
+d'espérance $\mu$ et de variance $\sigma^2$.
 
 La \textbf{moyenne empirique} de $X$ est une variable aléatoire $M_n$, définie
 par
@@ -174,33 +157,33 @@ par
   \label{eq:moyenne_empirique}
 \end{equation}
 
-$M_n$ est un estimateur de $m$ : étant donné un échantillon
-$(x_1, x_2, \dots, x_n),$ la valeur $\hat{m}_n = \frac1n \sum_{i=1}^n x_i$ est
-une estimation de $m$.
+$M_n$ est un estimateur de $\mu$ : étant donné un échantillon
+$(x_1, x_2, \dots, x_n),$ la valeur $\hat{\mu}_n = \frac1n \sum_{i=1}^n x_i$ est
+une estimation de $\mu$.
 
 À ce stade, rien ne nous permet d'affirmer que $M_n$ est un \textit{bon}
-estimateur de $m$ ; en effet, rien ne nous empêche de définir
+estimateur de $\mu$ ; en effet, rien ne nous empêche de définir
 $\frac2n \sum_{i=1}^n X_i$ ou $\frac1n \sum_{i=1}^n X_i^2$ comme estimateur de l'espérance.
 
 
 \paragraph{Question :} Quelles sont les \textit{propriétés} de $M_n$
-qui nous font préférer poser $M_n$ comme nous l'avons fait ?
+qui nous font préférer le poser comme nous l'avons fait ?
 
 \begin{answer}
   \begin{itemize}
-  \item $\EE(M_n) = \frac1n \sum_{i=1}^n \EE(X) = m.$ \\Nous verrons que l'on dit que $M_n$ est un estimateur
-    \textit{non-biaisé} de $m$ (cf. section~\ref{sec:biais_estimateur}) ;
+  \item $\EE(M_n) = \frac1n \sum_{i=1}^n \EE(X) = \mu.$ \\Nous verrons que l'on dit que $M_n$ est un estimateur
+    \textit{non-biaisé} de $\mu$ (cf. section~\ref{sec:biais_estimateur}) ;
   \item $\VV(M_n) = \frac{\sigma^2}{n}$ (voir calcul
     section~\ref{sec:variance_moyenne_empirique}) : plus l'échantillon est
     grand, plus la variance de l'estimateur est faible, autrement dit plus sa
-    réalisation $\hat{m}_n$ sera proche de son espérance $m$. \\On parle ici de
+    réalisation $\hat{\mu}_n$ sera proche de son espérance $\mu$. \\On parle ici de
     la \textit{précision} de $M_n$ (cf. section~\ref{sec:precision_estimateur})
     ;
-  \item Par la loi faible des grands nombres, $M_n \cvproba m.$ \\Nous verrons
-    que l'on dit que $M_n$ est un estimateur \textit{convergent} de $m$
+  \item Par la loi faible des grands nombres, $M_n \cvproba \mu.$ \\Nous verrons
+    que l'on dit que $M_n$ est un estimateur \textit{convergent} de $\mu$
     (cf. section~\ref{sec:convergence_estimateur}) ;
-  \item Par la loi forte des grands nombres, $M_n \cvps m.$ \\Nous verrons que
-    l'on dit que $M_n$ est un estimateur \textit{fortement convergent} de $m$
+  \item Par la loi forte des grands nombres, $M_n \cvps \mu.$ \\Nous verrons que
+    l'on dit que $M_n$ est un estimateur \textit{fortement convergent} de $\mu$
     (cf. section~\ref{sec:convergence_estimateur}).
   \end{itemize}
 \end{answer}
@@ -217,7 +200,7 @@ Notre but ici est maintenant de caractériser $\Theta_n$.
 \label{sec:biais_estimateur}
 Le \textbf{biais} d'un estimateur $\Theta_n$ de la quantité $\theta$ est défini par 
 \begin{equation}
-  \text{B}(\Theta_n) = \EE(\Theta_n) - \theta.
+  \text{B}(\Theta_n) = \EE(\Theta_n - \theta).
   \label{eq:biais}
 \end{equation}
 $\Theta_n$ est dit \textbf{non-biaisé} si $\text{B}(\Theta_n) = 0$, autrement dit si
@@ -238,7 +221,7 @@ $\theta + \epsilon$.
 
 \subsection{Exemple : Estimation non-biaisée de la variance}
 \label{sec:unbiased_variance_estimation}
-Considérons $X$ est de carré intégrable ($X \in \Lcal^2$), d'espérance $m$ et
+Considérons que $X$ est de carré intégrable ($X \in \Lcal^2$), d'espérance $\mu$ et
 de variance $\sigma^2$.
 
 La \textbf{variance empirique} de $X$ est une variable aléatoire $S_n$, définie
@@ -429,7 +412,7 @@ que convergent.
 
 \subsection{Exercice (estimation de la moyenne)}
 \label{sec:exo_proprietes}
-Nous cherchons à déterminer le poids moyen des bébés à la naissance en
+Nous cherchons à déterminer le poids moyen à la naissance des bébés en
 France. Pour cela, nous disposons d'un échantillon $(x_1, x_2, \dots, x_n)$ de
 $n$ mesures obtenues dans plusieurs maternités à travers le pays.
 
@@ -475,7 +458,7 @@ d'observer cet échantillon étant donnée la valeur estimée de $\theta$.
   réalisation d'une variable aléatoire $X$, de domaine $E = \{0, 1\}$ ($0$
   correspondant à \og échec \fg~et $1$ à \og réussite \fg), et suivant une loi
   de probabilité $\PP_X$.  Un choix classique pour cette loi de probabilité est
-  d'utiliser une loi de Bernoulli de paramètre $p$,:
+  d'utiliser une loi de Bernoulli de paramètre $p$:
   \[
     \PP_X(X=x) = p^x (1-p)^{1-x}.
   \] 
@@ -497,23 +480,24 @@ La \textbf{vraisemblance} de l'échantillon $(x_1, x_2, \dots, x_n)$ quantifie �
 quel point il est plausible d'observer cet échantillon en fonction de la valeur
 de la quantité à estimer.
 
-Pour tout $t \in \Scal$, nous notons $\PP_{X; t}$ la loi de $X$ paramétrée par
-$t.$ Supposons qu'il existe une mesure $\mu$ sur $(\RR, \Bcal(\RR))$ telle que
-$\PP_{X; t}$ s'écrive sous la forme $\PP_{X; t}= f_t \mu,$ où
-$f_t: \RR \mapsto \RR_+$ est $\mu$-mesurable. Dans le cas où $X$ est discrète,
-$\mu$ est la mesure de comptage et $f_t$ la fonction de masse de $X$. Dans le
-cas où $X$ est à densité, $\mu$ est la mesure de Lebesgue et $f_t$ est la
-densité de $X$. (Voir par exemple la section « Probabilités -- cadre général »
+Pour tout $t \in \Scal$, nous notons $\PP_{n;t}$ la loi de l'échantillon aléatoire $(X_1,\dots,X_n)$ paramétrée par
+$t.$ Supposons qu'il existe une mesure $\mu$ sur $(\RR^n, \Bcal(\RR^n))$ telle que
+$\PP_{n;t}$ s'écrive sous la forme $\PP_{n;t}= f_{n;t} \mu,$ où
+$f_{n;t}: \RR^n \mapsto \RR_+$ est $\mu$-mesurable. Dans le cas où l'échantillon aléatoire est à valeurs discrètes,
+$\mu$ est la mesure de comptage et $f_{n;t}$ la fonction de masse (jointe) de $(X_1,\dots,X_n)$. Dans le
+cas où il est à densité, $\mu$ est la mesure de Lebesgue et $f_{n;t}$ est la
+densité (jointe) de $(X_1,\dots,X_n)$. (Voir par exemple la section « Probabilités -- cadre général »
 de Probabilités III.) La vraisemblance de $(x_1, x_2, \dots, x_n)$ est alors la
 fonction de $t$ définie par
 \begin{equation}
-  L(x_1, x_2, \dots, x_n; t) = \prod_{i=1}^n f_t(x_i).
+  L(x_1, x_2, \dots, x_n; t) = f_{n;t}(x_1,\dots,x_n).
   \label{eq:likelihood}
 \end{equation}
 
-Notez que la loi de l'échantillon aléatoire $(X_1, X_2, \dots, X_n)$ est 
-$  \PP_{X_1, X_2, \dots, X_n ; t} = \prod_{i=1}^n \PP_{X; t} $
-car les $X_i$ sont indépendantes et identiquement distribuées.
+En notant $\PP_{X;t}$ la loi de $X$ et $f_{t}$ sa densité ou fonction de masse, remarquez que la loi du $n$-échantillon aléatoire $(X_1, X_2, \dots, X_n)$ de $X$ est 
+$  \PP_{n;t} = \PP_{X; t}^{\otimes n} $,
+car les $X_i$ sont indépendantes et identiquement distribuées, et que la vraisemblance se simplifie :
+$$L(x_1, x_2, \dots, x_n; t) = \prod_{i=1}^n f_{t}(x_i).$$
 
 On appelle alors \textbf{estimation par maximum de vraisemblance} ({\it maximum
   likelihood estimate} ou {\it MLE} en anglais) de $\theta$ une valeur
@@ -659,7 +643,7 @@ distribution uniforme.
 
 \subsection{Estimation de Bayes}
 L'estimation par maximum a posteriori est limitée dans le cas où la
-distribution a postériori est multi-modale ; en effet, le mode le plus grand
+distribution a posteriori est multi-modale ; en effet, le mode le plus grand
 peut être difficile à identifier par des algorithmes de gradient. De plus, elle
 ne prend en compte qu'un seul point de la distribution a posteriori, plutôt que
 de la considérer dans son intégralité.
@@ -670,7 +654,7 @@ minimise en espérance une fonction de coût sur la loi a posteriori de $\Theta$
 Cette définition est
 générale, et dépend de la fonction de coût utilisée. %du sens donné à « mieux estimée par » ;
 Nous utiliserons
-une des définitions les plus courantes, et considérons à partir de maintenant
+une des définitions les plus courantes, et considérerons à partir de maintenant
 l'erreur quadratique moyenne (définie section~\ref{sec:precision_estimateur}). 
 
 L'\textbf{estimation de Bayes pour l'erreur quadratique moyenne} de $\theta$
