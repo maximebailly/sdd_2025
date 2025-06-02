@@ -95,7 +95,7 @@
 %\titlespacing*{\part}{0pt}{50pt}{40pt}
 
 \titleformat{\part}[display]
-{\centering}%
+{\thispagestyle{plain}\centering}%
 {\color{halfgray}\fontsize{35pt}{0pt}\selectfont\sffamily{\partname~\protect\thepart}}{1em}%
 {{\color{MPblue}\trule}\vspace{1em} \fontsize{45pt}{0pt}\selectfont}[\clearpage]
 
@@ -131,6 +131,10 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \fancyfoot{}
 \usepackage{emptypage}
+\fancypagestyle{plain}{
+	\fancyhf{}
+\fancyhead[LE,RO]{\color{halfgray}\sffamily\bfseries\thepage}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
