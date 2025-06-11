@@ -165,6 +165,36 @@ Ce test s'appelle le test d'indépendance du chi2, et est implémenté dans \tex
   \label{tab:chi2}
 \end{table}
 
+\vspace*{2em}
+
+\section{Test de Neyman-Pearson du rapport de vraisemblance}
+
+On considère un vecteur de $n \in \NN^\ast$ variables aléatoires réelles $X_{1:n} := (X_1,\dots,X_n)$, toutes indépendantes et de même loi qu'une variable gaussienne $X$ d'espérance $\mu \in \RR$ et de variance $1$. Elles forment un échantillon aléatoire dont on observe une réalisation $x_{1:n} := (x_1,\dots,x_n)$. On souhaite réaliser le test simple de l'hypothèse $H_0 : \mu = 0$ contre $H_1 : \mu = m$ pour un certain $m < 0$ fixé.
+
+\begin{enumerate}
+	\item \textbf{Statistique de test}
+	\begin{enumerate}
+		\item Rappeler l'expression de la vraisemblance $L : \RR^n \times \RR \to \RR$ de l'échantillon $x_{1:n}$.
+		\item Calculer le rapport de vraisemblance $$\Lambda(x_{1:n}) = \dfrac{L(x_{1:n} , m)}{L(x_{1:n}, 0)}.$$ En donner une interprétation.
+		\item Expliciter la loi de la variable aléatoire $\lambda(X_{1:n}) = \ln \Lambda(X_{1:n})$. En déduire celle de $\Lambda(X_{1:n})$. Quelles sont-elles sous les hypothèses nulle puis alternative ?
+	\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item \textbf{Région de rejet}
+	\begin{enumerate}
+		\item En utilisant $\Lambda(X_{1:n})$ comme statistique de test, quelle est la forme de la région de rejet $\mathcal{I}_\alpha$ pour un niveau $\alpha \in \,]0,1[\,$ quelconque ? 
+		\item On note $\Phi$ la fonction de répartition de la loi normale centrée-réduite, et $q_\alpha$ son quantile de niveau $\alpha$. Exprimer $\mathcal{I}_\alpha$ en fonction de $q_\alpha$.
+	\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item \textbf{Puissance du test}
+	\begin{enumerate}
+		\item Pour $m < 0$ fixé, quelle est la puissance $\pi_n(m)$ de ce test ?
+		\item Pour $n$ fixé, étudier les variations de $m \in \RR_-^\ast \mapsto \pi_n(m)$, la fonction puissance du test. Interpréter.
+	\end{enumerate}
+\end{enumerate}
 
 \end{document}
 
