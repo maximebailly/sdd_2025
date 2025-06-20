@@ -58,16 +58,16 @@ PC 6 -- Modèles linéaires pour la classification
 \noindent
 \rule{\textwidth}{.4pt}
 
-\medskip
+%\medskip
 
-\paragraph{Pour aller à l'essentiel}
-\begin{itemize}
-\item Quelques questions sont assez techniques (calculs, optimisation). Le
-  choix vous est donné d'admettre les résultats ou de les démontrer. Pendant la
-  PC, il vaut mieux les admettre afin de pouvoir vous concentrer sur
-  les aspects directement liés au cours de science des données.
-\item Le but de cette PC est d'illustrer les principes de minimisation du risque empirique, maximisation de la vraisemblance, et régularisation avec deux algorithmes de classification : la \textbf{régression logistique} et les \textbf{machines à vecteurs de support} (ou \textbf{SVM}). Ces deux méthodes sont implémentées dans \texttt{scikit-learn}.
-\end{itemize}
+% \paragraph{Pour aller à l'essentiel}
+% \begin{itemize}
+% \item Quelques questions sont assez techniques (calculs, optimisation). Le
+%   choix vous est donné d'admettre les résultats ou de les démontrer. Pendant la
+%   PC, il vaut mieux les admettre afin de pouvoir vous concentrer sur
+%   les aspects directement liés au cours de science des données.
+% \item Le but de cette PC est d'illustrer les principes de minimisation du risque empirique, maximisation de la vraisemblance, et régularisation avec deux algorithmes de classification : la \textbf{régression logistique} et les \textbf{machines à vecteurs de support} (ou \textbf{SVM}). Ces deux méthodes sont implémentées dans \texttt{scikit-learn}.
+% \end{itemize}
 
 \section{Régression logistique}
 Nous considérons ici un problème de classification binaire en
@@ -83,12 +83,14 @@ $\innerproduct{\bbeta,~\xx}.$
 
 On appelle \textbf{fonction logistique} (à ne pas confondre avec la
 \textit{fonction de coût logistique} de la section 7.4.2 du poly) la fonction
-\begin{align*}
+\begin{equation*}
+\begin{split}
   \sigma: \RR & \rightarrow [0, 1]\\
   u & \mapsto \frac{1}{1+e^{-u}}. 
-\end{align*}
+\end{split}
+\end{equation*}
 Son graphe est représenté sur la figure~\ref{fig:logistic}. Cette fonction est
-dérivable et sa dérivée vérifie (vous pouvez le vérifier)
+dérivable et sa dérivée vérifie :
 \begin{equation}
   \sigma^\prime(u) = \sigma(u) (1-\sigma(u)) \text{ en tout point } u \in \RR.
   \label{eq:sigma_prime}
@@ -101,7 +103,8 @@ dérivable et sa dérivée vérifie (vous pouvez le vérifier)
   \label{fig:logistic}
 \end{figure}
 
-\subsection{Minimisation du risque empirique}    
+\subsection{Minimisation du risque empirique}
+\label{sec:mre_logistic}
 \begin{enumerate}
 \item Pourquoi un modèle paramétrique linéaire, c'est-à-dire de la forme
   $f: \xx \mapsto \innerproduct{\bbeta,~\xx}$, n'est-il pas approprié pour un problème de
@@ -129,9 +132,9 @@ logistique :
 \item Montrer ou admettre que le risque empirique est convexe. Admet-il un minimum global ? 
 \item Comment minimiser le risque empirique ? On pourra montrer ou admettre que le gradient du risque empirique en $\bbeta$ vaut 
     \begin{equation*}
-      \nabla_{\bbeta}R_n = - \frac1n \sum_{i=1}^n \left(y^i - \frac1{1 + e^{-\innerproduct{\bbeta,~\xx^i}}} \right) \xx^i.
+      \nabla_{\bbeta}~R_n(\bbeta) = - \frac1n \sum_{i=1}^n \left(y^i - \frac1{1 + e^{-\innerproduct{\bbeta,~\xx^i}}} \right) \xx^i.
     \end{equation*}
-    Pour le calculer, on pourra poser
+    Astuce : poser
     $\sigma_i = \sigma(\innerproduct{\bbeta,~\xx^i})$ et commencer par exprimer
     $\nabla_{\bbeta} \sigma_i$ en fonction de $\xx^i$ et $\sigma_i$.
 \end{enumerate}
@@ -162,7 +165,7 @@ estimer.
 %   \end{equation}
 %   où $g$ et $\PP_{V|U=\uu}$ peuvent toutes deux être paramétrées par $\theta$. 
 
-\paragraph{Vraisemblance} Nous avons défini (Section 3.6 du poly) la
+\paragraph{Vraisemblance} Nous avons défini (section 3.5 du poly) la
 vraisemblance dans le cadre de l'estimation ponctuelle. Ici, nous allons nous
 intéresser, comme dans le contexte des régressions paramétriques (sections
 7.5.3 et 7.5.4), à l'estimation du \textit{vecteur} $\bbeta \in \RR^{p+1}$, à
@@ -181,7 +184,7 @@ en exprimant $\PP_{V|U}$ grâce à la fonction de masse de $V|U$ et $\PP_U$ grâ
   Posons $g_X$ la densité de $X$. Écrire la log-vraisemblance du jeu
   d'apprentissage $\DD$ en fonction de $\PP(Y=1 | X=\xx^i)$.
 \item Dans cette log-vraisemblance, remplacer $\PP(Y=1 | X=\xx^i)$ par sa
-  valeur telle que modélisée dans la section~1.1. Qu'en conclure sur
+  valeur telle que modélisée dans la section~\ref{sec:mre_logistic}. Qu'en conclure sur
   l'estimateur par maximum de vraisemblance ?
 \end{enumerate}
 
@@ -197,8 +200,9 @@ en exprimant $\PP_{V|U}$ grâce à la fonction de masse de $V|U$ et $\PP_U$ grâ
 \item Même question pour la régularisation $\ell_1$.
 \end{enumerate}
 
+\pagebreak
 
-\section{Machine à vecteurs de support}
+\section{[BONUS] Machine à vecteurs de support}
 Nous considérons ici toujours un problème de classification binaire en
 dimension $p$, mais allons utiliser $\{-1, 1\}$ pour les étiquettes. Nous
 disposons d'un jeu d'apprentissage $\DD = \{(\xx^i, y^i)\}_{i=1, \dots, n}$
@@ -316,7 +320,7 @@ Montrer qu'il est équivalent à
 
 
 
-\subsection{Pour aller plus loin : SVM à marge souple}
+\subsection{SVM à marge souple}
 Dans le cas non-séparable, on utilise la fonction de perte dite \textit{hinge},
 définie par
 \begin{align*}
